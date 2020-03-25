@@ -16,3 +16,49 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.loader::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 33.3%;
+  width: 33.3%;
+  height: 1px;
+  background: var(--secondaryColor);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: animate 2s infinite alternate;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0) scaleX(0);
+    transform-origin: left;
+    left: 33.3%;
+    right: auto;
+  }
+
+  50% {
+    transform: translateX(0) scaleX(1);
+    transform-origin: left;
+    left: 33.3%;
+    right: auto;
+  }
+
+  100% {
+    transform: translateX(0) scaleX(0);
+    transform-origin: right;
+    left: auto;
+    right: 33.3%;
+  }
+}
